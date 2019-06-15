@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
-import GuestList from './GuestList';
-import Counter from './Counter';
+
+import Header from './Header';
+import MainContent from './MainContent';
 
 class App extends Component {
 
@@ -100,39 +101,18 @@ class App extends Component {
     const totalInvited = this.getTotalInvited();
     const numberAttending = this.getAttendingGuests();
     const numberUnconfirmed = totalInvited - numberAttending;
-    
+
     return (
       <div className="App">
-      <header>
-        <h1>RSVP</h1>
-        <p>Best Party Ever</p>
-        <form onSubmit={this.handleGuestSubmit}>
-            <input 
-              type="text" 
-              onChange={this.handleNameInput} 
-              value={this.state.pendingGuest} 
-              placeholder="Invite Someone" />
-            <button type="submit" name="submit" value="submit">Submit</button>
-        </form>
-      </header>
-      <div className="main">
-        <div>
-          <h2>Invitees</h2>
-          <label>
-            <input 
-              type="checkbox" 
-              onChange={this.toggleFilter}
-              checked={this.state.isFiltered}
-            /> Hide those who haven't responded
-          </label>
-        </div>
-        <Counter 
+        <Header 
+          handleGuestSubmit={this.handleGuestSubmit}
+          handleNameInput={this.handleNameInput}
+          pendingGuest={this.state.pendingGuest} 
+        />
+        <MainContent 
           totalInvited={totalInvited}
           numberAttending={numberAttending}
           numberUnconfirmed={numberUnconfirmed}
-        />
-
-        <GuestList 
           guests={this.state.guests} 
           toggleConfirmationAt={this.toggleConfirmationAt}
           toggleEditingAt={this.toggleEditingAt}
@@ -140,10 +120,9 @@ class App extends Component {
           isFiltered={this.state.isFiltered}
           removeGuestAt={this.removeGuestAt}
           pendingGuest={this.state.pendingGuest}
+          toggleFilter={this.toggleFilter}
         />
-
       </div>
-    </div>
     );
   }
 }
