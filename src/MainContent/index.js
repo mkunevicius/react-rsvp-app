@@ -19,11 +19,11 @@ const MainContent = props =>
 
 		<GuestList 
 			guests={props.guests} 
-			toggleConfirmationAt={props.toggleConfirmationAt}
+			toggleConfirmation={props.toggleConfirmation}
 			toggleEditingAt={props.toggleEditingAt}
-			setNameAt={props.setNameAt}
+			setName={props.setName}
 			isFiltered={props.isFiltered}
-			removeGuestAt={props.removeGuestAt}
+			removeGuest={props.removeGuest}
 			pendingGuest={props.pendingGuest}
 		/>
 	</div>
@@ -33,11 +33,11 @@ const MainContent = props =>
     numberAttending: PropTypes.number,
     numberUnconfirmed: PropTypes.number,
     guests: PropTypes.array.isRequired,
-    toggleConfirmationAt: PropTypes.func.isRequired,
+    toggleConfirmation: PropTypes.func.isRequired,
     toggleEditingAt: PropTypes.func.isRequired,
-    setNameAt: PropTypes.func.isRequired,
+    setName: PropTypes.func.isRequired,
   	isFiltered: PropTypes.bool.isRequired,
-    removeGuestAt: PropTypes.func.isRequired,
+    removeGuest: PropTypes.func.isRequired,
     pendingGuest: PropTypes.string.isRequired,
     toggleFilter: PropTypes.func.isRequired,
 	}
